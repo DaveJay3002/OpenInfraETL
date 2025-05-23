@@ -1,5 +1,5 @@
 from fastapi import FastAPI, BackgroundTasks, HTTPException
-from typing import List
+from typing import List, Optional
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
@@ -13,15 +13,19 @@ app = FastAPI()
 
 # Pydantic model for serialization
 class Project(BaseModel):
-    id: int
     project_name: str
     rera_no: str
-    promoter_name: str
-    promoter_address: str
-
-    model_config = {
-        "from_attributes": True,
-    }
+    promoter_address: Optional[str] = None
+    promoter_name: Optional[str] = None
+    promoter_company_name: Optional[str] = None
+    promoter_registration_no: Optional[str] = None
+    promoter_correspondence_office_address: Optional[str] = None
+    promoter_registered_office_address: Optional[str] = None
+    promoter_entity: Optional[str] = None
+    promoter_email: Optional[str] = None
+    promoter_mobile: Optional[str] = None
+    promoter_telephone: Optional[str] = None
+    promoter_gst_no: Optional[str] = None
 
 
 def get_db():
