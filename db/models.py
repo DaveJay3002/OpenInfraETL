@@ -15,8 +15,9 @@ class Promoter(Base):
 class Project(Base):
     __tablename__ = "projects"
     id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
-    rera_id = Column(String, unique=True, nullable=False)
-    address = Column(String)
+    project_name = Column(String, nullable=False)
+    rera_no = Column(String, unique=True, nullable=False)
+    promoter = relationship("Promoter", back_populates="projects")  # relationship
+    promoter_address = Column(String)
     promoter_id = Column(Integer, ForeignKey("promoters.id"))
-    promoter = relationship("Promoter", back_populates="projects")
+    promoter_name = Column(String)

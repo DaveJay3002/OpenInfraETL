@@ -1,6 +1,6 @@
 from sqlalchemy.orm import sessionmaker
-from models import Promoter, Project
-from database import engine, init
+from db.models import Promoter, Project
+from db.database import engine, init
 
 # Initialize DB schema (creates tables)
 init()
